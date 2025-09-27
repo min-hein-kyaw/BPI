@@ -1,0 +1,6 @@
+@BPI_HostAddress = http://localhost:5189
+
+GET {{BPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
