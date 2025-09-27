@@ -30,6 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             colName = new DataGridViewTextBoxColumn();
+            colId = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -38,7 +39,7 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colName });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colName, colId });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
@@ -49,10 +50,17 @@
             // 
             // colName
             // 
-            colName.DataPropertyName = "Name";
+            colName.DataPropertyName = "Guid";
             colName.HeaderText = "Name";
             colName.Name = "colName";
             colName.ReadOnly = true;
+            // 
+            // colId
+            // 
+            colId.DataPropertyName = "Guid";
+            colId.HeaderText = "Column Id";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
             // 
             // Form1
             // 
@@ -71,5 +79,6 @@
 
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colId;
     }
 }

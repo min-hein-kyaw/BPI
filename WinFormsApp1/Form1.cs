@@ -12,7 +12,7 @@ namespace WinFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             HttpClient client = new HttpClient();
-            var response = client.GetAsync("https://localhost:7157/BurmeseRecipe/Ingredients").Result;
+            var response = client.GetAsync("https://localhost:7157/api/BurmeseRecipe/Ingredients").Result;
             if (response.IsSuccessStatusCode)
             {
 
@@ -39,7 +39,11 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(e.ColumnIndex == 0)
+            {
+                var id = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
 
+            }
         }
     }
 }
