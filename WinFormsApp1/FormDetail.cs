@@ -1,28 +1,39 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static WinFormsApp1.Form1;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class FormDetail : Form
     {
-        public Form1()
+        private string _receivedId;
+        public FormDetail(string? id)
         {
             InitializeComponent();
+            _receivedId = id;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormDetail_Load(object sender, EventArgs e)
         {
             HttpClient client = new HttpClient();
-            var response = client.GetAsync("https://localhost:7157/api/BurmeseRecipe/Ingredients").Result;
+            var response = client.GetAsync($"https://localhost:7157/api/BurmeseRecipe/{_receivedId}").Result;
             if (response.IsSuccessStatusCode)
             {
 
                 string json = response.Content.ReadAsStringAsync().Result;
-                var recipes = JsonConvert.DeserializeObject<Recipes[]>(json);
+                var recipes = JsonConvert.DeserializeObject<Recipes>(json);
                 dataGridView1.AutoGenerateColumns = false;
                 dataGridView1.DataSource = recipes;
             }
         }
-
         public class RecipesResponseModel
         {
             public Recipes[] Recipes { get; set; }
@@ -39,13 +50,7 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 0)
-            {
-                var id = dataGridView1.Rows[e.RowIndex].Cells["colId"].Value.ToString();
-                FormDetail formDetail = new FormDetail(id);
-                formDetail.ShowDialog();
 
-            }
         }
     }
 }

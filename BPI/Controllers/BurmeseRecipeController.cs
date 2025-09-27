@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BPI.Controllers
 {
@@ -22,6 +23,20 @@ namespace BPI.Controllers
             var result = JsonConvert.DeserializeObject<RecipesResponseModel>(json)!;
             return (result);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetRecipe(string id) {
+
+            var result = GetData();
+            var item = result.Recipes.Where(x => x.Guid == id).FirstOrDefault();
+            if(item == null)
+            {
+                return NotFound("item not found");
+            }
+            return Ok(item);
+        }
+
+
 
     }
 }

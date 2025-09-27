@@ -1,14 +1,14 @@
 ﻿namespace WinFormsApp1
 {
-    partial class Form1
+    partial class FormDetail
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,27 +23,25 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
             colName = new DataGridViewTextBoxColumn();
-            colId = new DataGridViewTextBoxColumn();
+            colIngredients = new DataGridViewTextBoxColumn();
+            colCookingInstructions = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colName, colId });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colName, colIngredients, colCookingInstructions });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(800, 450);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -53,25 +51,28 @@
             colName.DataPropertyName = "Name";
             colName.HeaderText = "Name";
             colName.Name = "colName";
-            colName.ReadOnly = true;
             // 
-            // colId
+            // colIngredients
             // 
-            colId.DataPropertyName = "Guid";
-            colId.HeaderText = "Column Id";
-            colId.Name = "colId";
-            colId.ReadOnly = true;
-            colId.Visible = false;
+            colIngredients.DataPropertyName = "Ingredients";
+            colIngredients.HeaderText = "Ingredients";
+            colIngredients.Name = "colIngredients";
             // 
-            // Form1
+            // colCookingInstructions
+            // 
+            colCookingInstructions.DataPropertyName = "CookingInstructions";
+            colCookingInstructions.HeaderText = "Instructions";
+            colCookingInstructions.Name = "colCookingInstructions";
+            // 
+            // FormDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(dataGridView1);
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Name = "FormDetail";
+            Text = "FormDetail";
+            Load += FormDetail_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -80,6 +81,7 @@
 
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colIngredients;
+        private DataGridViewTextBoxColumn colCookingInstructions;
     }
 }
